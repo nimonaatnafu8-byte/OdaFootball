@@ -1,601 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11th VS 9th - Epic Football Clash</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Background Animation -->
-    <div class="animated-bg"></div>
-    
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">⚽ ODA FOOTBALL</div>
-        <nav class="nav-links">
-            <a href="#match">MATCH</a>
-            <a href="#lineups">LINEUPS</a>
-            <a href="#stats">STATS</a>
-            <a href="#history">HISTORY</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ODA Football</title>
+    <meta name="description" content="ODA Football - football fixtures, team stats, standings, players and news." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app-shell">
+      <header class="site-header">
+        <div class="brand-group">
+          <div class="logo-mark">O</div>
+          <div>
+            <div class="brand-name">ODA FOOTBALL</div>
+            <div class="brand-tag">Hub & League</div>
+          </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#/home">Home</a>
+          <a href="#/matches">Matches</a>
+          <a href="#/results">Results</a>
+          <a href="#/teams">Teams</a>
+          <a href="#/players">Players</a>
+          <a href="#/standings">Standings</a>
+          <a href="#/statistics">Statistics</a>
+          <a href="#/news">News</a>
+          <a href="#/admin" class="admin-link">Admin</a>
         </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="stadium-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="match-title">
-                <h1 class="glow-text-blue">⚡ EPIC CLASH ⚡</h1>
-                <p class="subtitle">Champions League Style Showdown</p>
-            </div>
+        <div class="header-tools">
+          <label class="search-wrap" aria-label="Global search">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" placeholder="Search teams, players, fixtures..." />
+          </label>
         </div>
-    </section>
+      </header>
 
-    <!-- Match Section -->
-    <section id="match" class="match-section">
-        <div class="container">
-            <!-- Countdown Timer -->
-            <div class="countdown-container">
-                <h2 class="section-title">MATCH STARTS IN</h2>
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="days">00</div>
-                        <div class="countdown-label">DAYS</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="hours">00</div>
-                        <div class="countdown-label">HOURS</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="minutes">00</div>
-                        <div class="countdown-label">MINUTES</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="seconds">00</div>
-                        <div class="countdown-label">SECONDS</div>
-                    </div>
-                </div>
-            </div>
+      <div id="searchResults" class="search-results hidden" aria-live="polite"></div>
 
-            <!-- Live Score Section -->
-            <div class="live-score-container">
-                <div class="live-indicator">
-                    <div class="live-dot"></div>
-                    <span>LIVE MATCH</span>
-                </div>
-                
-                <div class="teams-wrapper">
-                    <!-- Team 11th -->
-                    <div class="team team-left">
-                        <div class="team-badge blue">11</div>
-                        <h2 class="team-name">11th</h2>
-                        <p class="team-info">CHAMPIONSHIP LEADERS</p>
-                        <div class="team-stats">
-                            <div class="stat">
-                                <span class="stat-value blue-glow">42</span>
-                                <span class="stat-label">Victories</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">18</span>
-                                <span class="stat-label">Draws</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">8</span>
-                                <span class="stat-label">Losses</span>
-                            </div>
-                        </div>
-                    </div>
+      <main id="pageRoot" class="page-root"></main>
 
-                    <!-- Score Display -->
-                    <div class="score-display">
-                        <div class="score-board">
-                            <div class="score-number blue-team">3</div>
-                            <div class="score-vs">:</div>
-                            <div class="score-number red-team">2</div>
-                        </div>
-                        <div class="match-time">45' FT</div>
-                    </div>
-
-                    <!-- Team 9th -->
-                    <div class="team team-right">
-                        <div class="team-badge red">9</div>
-                        <h2 class="team-name">9th</h2>
-                        <p class="team-info">RISING CHALLENGERS</p>
-                        <div class="team-stats">
-                            <div class="stat">
-                                <span class="stat-value red-glow">28</span>
-                                <span class="stat-label">Victories</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">22</span>
-                                <span class="stat-label">Draws</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">18</span>
-                                <span class="stat-label">Losses</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Voting System -->
-                <div class="voting-section">
-                    <h3 class="voting-title">🗳️ WHO WILL WIN?</h3>
-                    <div class="voting-buttons">
-                        <button class="vote-btn vote-11th" data-team="11th">
-                            <span class="vote-count" id="vote-11th">4,287</span>
-                            <span class="vote-label">VOTE 11th</span>
-                            <div class="vote-progress" id="progress-11th" style="width: 62%"></div>
-                        </button>
-                        <button class="vote-btn vote-draw" data-team="draw">
-                            <span class="vote-count" id="vote-draw">1,456</span>
-                            <span class="vote-label">DRAW</span>
-                            <div class="vote-progress" id="progress-draw" style="width: 21%"></div>
-                        </button>
-                        <button class="vote-btn vote-9th" data-team="9th">
-                            <span class="vote-count" id="vote-9th">1,821</span>
-                            <span class="vote-label">VOTE 9th</span>
-                            <div class="vote-progress" id="progress-9th" style="width: 26%"></div>
-                        </button>
-                    </div>
-                    <div class="total-votes">Total Votes: <span id="total-votes">7,564</span></div>
-                </div>
-            </div>
-
-            <!-- Team Comparison Stats -->
-            <div class="comparison-section">
-                <h2 class="section-title">⚔️ TEAM COMPARISON</h2>
-                <div class="comparison-grid">
-                    <div class="comparison-item">
-                        <div class="stat-bar">
-                            <div class="bar-label">POSSESION</div>
-                            <div class="bar-container">
-                                <div class="bar-fill blue" style="width: 58%"></div>
-                                <div class="bar-fill red" style="width: 42%"></div>
-                            </div>
-                            <div class="bar-values">
-                                <span class="blue-text">58%</span>
-                                <span class="red-text">42%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="stat-bar">
-                            <div class="bar-label">SHOTS ON TARGET</div>
-                            <div class="bar-container">
-                                <div class="bar-fill blue" style="width: 72%"></div>
-                                <div class="bar-fill red" style="width: 28%"></div>
-                            </div>
-                            <div class="bar-values">
-                                <span class="blue-text">13</span>
-                                <span class="red-text">5</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="stat-bar">
-                            <div class="bar-label">PASSES ACCURACY</div>
-                            <div class="bar-container">
-                                <div class="bar-fill blue" style="width: 85%"></div>
-                                <div class="bar-fill red" style="width: 78%"></div>
-                            </div>
-                            <div class="bar-values">
-                                <span class="blue-text">85%</span>
-                                <span class="red-text">78%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="stat-bar">
-                            <div class="bar-label">TACKLES</div>
-                            <div class="bar-container">
-                                <div class="bar-fill blue" style="width: 62%"></div>
-                                <div class="bar-fill red" style="width: 68%"></div>
-                            </div>
-                            <div class="bar-values">
-                                <span class="blue-text">18</span>
-                                <span class="red-text">22</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="stat-bar">
-                            <div class="bar-label">FOULS</div>
-                            <div class="bar-container">
-                                <div class="bar-fill blue" style="width: 40%"></div>
-                                <div class="bar-fill red" style="width: 55%"></div>
-                            </div>
-                            <div class="bar-values">
-                                <span class="blue-text">8</span>
-                                <span class="red-text">12</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="stat-bar">
-                            <div class="bar-label">DRIBBLES</div>
-                            <div class="bar-container">
-                                <div class="bar-fill blue" style="width: 70%"></div>
-                                <div class="bar-fill red" style="width: 65%"></div>
-                            </div>
-                            <div class="bar-values">
-                                <span class="blue-text">24</span>
-                                <span class="red-text">22</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div>
+            <div class="brand-name footer-brand">ODA FOOTBALL</div>
+            <p>Built for communities, clubs, and matchday excitement.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#/matches">Matches</a></li>
+              <li><a href="#/teams">Teams</a></li>
+              <li><a href="#/standings">Standings</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Info</h4>
+            <ul>
+              <li><a href="#/news">News</a></li>
+              <li><a href="#/statistics">Statistics</a></li>
+              <li><a href="#/admin">Admin</a></li>
+            </ul>
+          </div>
         </div>
-    </section>
+        <div class="footer-bottom">© 2026 ODA Football. All rights reserved.</div>
+      </footer>
+    </div>
 
-    <!-- Lineups Section -->
-    <section id="lineups" class="lineups-section">
-        <div class="container">
-            <h2 class="section-title">⚽ STARTING LINEUPS</h2>
-            <div class="lineups-grid">
-                <!-- Team 11th Lineup -->
-                <div class="lineup-team">
-                    <h3 class="lineup-title blue-glow">11th FORMATION (4-3-3)</h3>
-                    <div class="players-grid">
-                        <div class="player-card">
-                            <div class="player-number blue">1</div>
-                            <div class="player-name">Marcus Johnson</div>
-                            <div class="player-position">GK</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">9.2</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number blue">4</div>
-                            <div class="player-name">David Miller</div>
-                            <div class="player-position">DEF</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">8.7</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number blue">5</div>
-                            <div class="player-name">James Brown</div>
-                            <div class="player-position">DEF</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">8.9</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number blue">8</div>
-                            <div class="player-name">Alex Rodriguez</div>
-                            <div class="player-position">MID</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">9.1</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number blue">10</div>
-                            <div class="player-name">Chris Anderson</div>
-                            <div class="player-position">FWD</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">9.4</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number blue">7</div>
-                            <div class="player-name">Tom Wilson</div>
-                            <div class="player-position">FWD</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">8.8</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number blue">11</div>
-                            <div class="player-name">Ryan Lee</div>
-                            <div class="player-position">FWD</div>
-                            <div class="player-stats">
-                                <span class="rating blue-glow">8.5</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team 9th Lineup -->
-                <div class="lineup-team">
-                    <h3 class="lineup-title red-glow">9th FORMATION (4-2-4)</h3>
-                    <div class="players-grid">
-                        <div class="player-card">
-                            <div class="player-number red">1</div>
-                            <div class="player-name">Steven Garcia</div>
-                            <div class="player-position">GK</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">8.9</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number red">3</div>
-                            <div class="player-name">Lucas Fernandes</div>
-                            <div class="player-position">DEF</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">8.4</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number red">6</div>
-                            <div class="player-name">Miguel Santos</div>
-                            <div class="player-position">DEF</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">8.6</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number red">9</div>
-                            <div class="player-name">Paulo Silva</div>
-                            <div class="player-position">MID</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">8.2</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number red">10</div>
-                            <div class="player-name">Diego Martinez</div>
-                            <div class="player-position">FWD</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">9.0</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number red">7</div>
-                            <div class="player-name">Carlos Lopez</div>
-                            <div class="player-position">FWD</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">8.7</span>
-                            </div>
-                        </div>
-                        <div class="player-card">
-                            <div class="player-number red">11</div>
-                            <div class="player-name">Alejandro Ramirez</div>
-                            <div class="player-position">FWD</div>
-                            <div class="player-stats">
-                                <span class="rating red-glow">8.3</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Top Scorers & MVP Section -->
-    <section id="stats" class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <!-- Top Scorers -->
-                <div class="stats-card">
-                    <h3 class="stats-title">🎯 TOP SCORERS</h3>
-                    <div class="scorers-list">
-                        <div class="scorer-item">
-                            <div class="scorer-rank">1</div>
-                            <div class="scorer-info">
-                                <div class="scorer-name">Chris Anderson</div>
-                                <div class="scorer-team blue-text">11th</div>
-                            </div>
-                            <div class="scorer-goals blue-glow">18 Goals</div>
-                        </div>
-                        <div class="scorer-item">
-                            <div class="scorer-rank">2</div>
-                            <div class="scorer-info">
-                                <div class="scorer-name">Diego Martinez</div>
-                                <div class="scorer-team red-text">9th</div>
-                            </div>
-                            <div class="scorer-goals red-glow">14 Goals</div>
-                        </div>
-                        <div class="scorer-item">
-                            <div class="scorer-rank">3</div>
-                            <div class="scorer-info">
-                                <div class="scorer-name">Tom Wilson</div>
-                                <div class="scorer-team blue-text">11th</div>
-                            </div>
-                            <div class="scorer-goals blue-glow">12 Goals</div>
-                        </div>
-                        <div class="scorer-item">
-                            <div class="scorer-rank">4</div>
-                            <div class="scorer-info">
-                                <div class="scorer-name">Carlos Lopez</div>
-                                <div class="scorer-team red-text">9th</div>
-                            </div>
-                            <div class="scorer-goals red-glow">10 Goals</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MVP Stats -->
-                <div class="stats-card">
-                    <h3 class="stats-title">👑 MVP OF MATCH</h3>
-                    <div class="mvp-container">
-                        <div class="mvp-badge blue">MVP</div>
-                        <div class="mvp-player">
-                            <div class="mvp-name">Chris Anderson</div>
-                            <div class="mvp-team">11th</div>
-                        </div>
-                        <div class="mvp-stats-grid">
-                            <div class="mvp-stat">
-                                <span class="mvp-stat-value">2</span>
-                                <span class="mvp-stat-label">Goals</span>
-                            </div>
-                            <div class="mvp-stat">
-                                <span class="mvp-stat-value">5</span>
-                                <span class="mvp-stat-label">Assists</span>
-                            </div>
-                            <div class="mvp-stat">
-                                <span class="mvp-stat-value">9.4</span>
-                                <span class="mvp-stat-label">Rating</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fan Comments -->
-                <div class="stats-card">
-                    <h3 class="stats-title">💬 FAN REACTIONS</h3>
-                    <div class="comments-list">
-                        <div class="comment-item">
-                            <div class="comment-author">⚡ FanZone</div>
-                            <div class="comment-text">"Incredible performance by 11th! This is peak football!"</div>
-                            <div class="comment-likes">❤️ 2,456</div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-author">🔥 Red_Nation</div>
-                            <div class="comment-text">"9th gave their all, that second half was intense!"</div>
-                            <div class="comment-likes">❤️ 1,834</div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-author">⚽ Football_Lover</div>
-                            <div class="comment-text">"One of the greatest matches I've ever witnessed!"</div>
-                            <div class="comment-likes">❤️ 3,102</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Match History Section -->
-    <section id="history" class="history-section">
-        <div class="container">
-            <h2 class="section-title">📊 MATCH HISTORY</h2>
-            <div class="history-grid">
-                <!-- Match 1 -->
-                <div class="history-card">
-                    <div class="match-date">May 25, 2026</div>
-                    <div class="match-location">🏟️ Grand Stadium</div>
-                    <div class="history-teams">
-                        <div class="history-team">
-                            <div class="history-team-badge blue">11</div>
-                            <span class="history-team-name">11th</span>
-                        </div>
-                        <div class="history-score">
-                            <span class="history-score-num blue-glow">4</span>
-                            <span class="history-score-vs">-</span>
-                            <span class="history-score-num red-glow">1</span>
-                        </div>
-                        <div class="history-team">
-                            <span class="history-team-name">9th</span>
-                            <div class="history-team-badge red">9</div>
-                        </div>
-                    </div>
-                    <div class="match-status victory">VICTORY</div>
-                </div>
-
-                <!-- Match 2 -->
-                <div class="history-card">
-                    <div class="match-date">May 20, 2026</div>
-                    <div class="match-location">🏟️ Central Arena</div>
-                    <div class="history-teams">
-                        <div class="history-team">
-                            <div class="history-team-badge blue">11</div>
-                            <span class="history-team-name">11th</span>
-                        </div>
-                        <div class="history-score">
-                            <span class="history-score-num blue-glow">2</span>
-                            <span class="history-score-vs">-</span>
-                            <span class="history-score-num red-glow">2</span>
-                        </div>
-                        <div class="history-team">
-                            <span class="history-team-name">9th</span>
-                            <div class="history-team-badge red">9</div>
-                        </div>
-                    </div>
-                    <div class="match-status draw">DRAW</div>
-                </div>
-
-                <!-- Match 3 -->
-                <div class="history-card">
-                    <div class="match-date">May 15, 2026</div>
-                    <div class="match-location">🏟️ North Field</div>
-                    <div class="history-teams">
-                        <div class="history-team">
-                            <div class="history-team-badge blue">11</div>
-                            <span class="history-team-name">11th</span>
-                        </div>
-                        <div class="history-score">
-                            <span class="history-score-num blue-glow">5</span>
-                            <span class="history-score-vs">-</span>
-                            <span class="history-score-num red-glow">2</span>
-                        </div>
-                        <div class="history-team">
-                            <span class="history-team-name">9th</span>
-                            <div class="history-team-badge red">9</div>
-                        </div>
-                    </div>
-                    <div class="match-status victory">VICTORY</div>
-                </div>
-
-                <!-- Match 4 -->
-                <div class="history-card">
-                    <div class="match-date">May 10, 2026</div>
-                    <div class="match-location">🏟️ South Complex</div>
-                    <div class="history-teams">
-                        <div class="history-team">
-                            <div class="history-team-badge blue">11</div>
-                            <span class="history-team-name">11th</span>
-                        </div>
-                        <div class="history-score">
-                            <span class="history-score-num blue-glow">3</span>
-                            <span class="history-score-vs">-</span>
-                            <span class="history-score-num red-glow">0</span>
-                        </div>
-                        <div class="history-team">
-                            <span class="history-team-name">9th</span>
-                            <div class="history-team-badge red">9</div>
-                        </div>
-                    </div>
-                    <div class="match-status victory">VICTORY</div>
-                </div>
-            </div>
-
-            <!-- Overall Record -->
-            <div class="overall-record">
-                <div class="record-item">
-                    <div class="record-team">11th</div>
-                    <div class="record-stats">
-                        <span class="record-value blue-glow">3</span>
-                        <span class="record-label">Wins</span>
-                    </div>
-                </div>
-                <div class="record-divider">vs</div>
-                <div class="record-item">
-                    <div class="record-team">9th</div>
-                    <div class="record-stats">
-                        <span class="record-value red-glow">0</span>
-                        <span class="record-label">Wins</span>
-                    </div>
-                </div>
-                <div class="record-separator">|</div>
-                <div class="record-item">
-                    <div class="record-draws">
-                        <span class="record-value">1</span>
-                        <span class="record-label">Draw</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 ODA FOOTBALL - Epic Match Experience</p>
-            <div class="social-links">
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">Instagram</a>
-                <a href="#" class="social-link">YouTube</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Confetti Canvas -->
-    <canvas id="confetti-canvas"></canvas>
+    <div id="toast" class="toast hidden" aria-live="assertive"></div>
+    <div id="modalRoot"></div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
